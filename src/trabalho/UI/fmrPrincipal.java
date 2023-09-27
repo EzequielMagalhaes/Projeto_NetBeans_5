@@ -26,15 +26,15 @@ public class fmrPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        desktopPane = new javax.swing.JDesktopPane();
         menuBar = new javax.swing.JMenuBar();
         mnuEstoque = new javax.swing.JMenu();
         itmInserir = new javax.swing.JMenuItem();
         itmSelecionar = new javax.swing.JMenuItem();
         itmAlterar = new javax.swing.JMenuItem();
         itmExcluir = new javax.swing.JMenuItem();
+        itmFechar = new javax.swing.JMenuItem();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
 
         mnuEstoque.setMnemonic('f');
         mnuEstoque.setText("Estoque");
@@ -69,6 +69,10 @@ public class fmrPrincipal extends javax.swing.JFrame {
         });
         mnuEstoque.add(itmExcluir);
 
+        itmFechar.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        itmFechar.setText("Fechar");
+        mnuEstoque.add(itmFechar);
+
         menuBar.add(mnuEstoque);
 
         setJMenuBar(menuBar);
@@ -77,11 +81,11 @@ public class fmrPrincipal extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(desktopPane, javax.swing.GroupLayout.DEFAULT_SIZE, 400, Short.MAX_VALUE)
+            .addGap(0, 400, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(desktopPane, javax.swing.GroupLayout.DEFAULT_SIZE, 279, Short.MAX_VALUE)
+            .addGap(0, 279, Short.MAX_VALUE)
         );
 
         pack();
@@ -131,9 +135,9 @@ public class fmrPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JDesktopPane desktopPane;
     private javax.swing.JMenuItem itmAlterar;
     private javax.swing.JMenuItem itmExcluir;
+    private javax.swing.JMenuItem itmFechar;
     private javax.swing.JMenuItem itmInserir;
     private javax.swing.JMenuItem itmSelecionar;
     private javax.swing.JMenuBar menuBar;
