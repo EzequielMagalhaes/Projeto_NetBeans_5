@@ -29,7 +29,7 @@ public class fmrPrincipal extends javax.swing.JFrame {
         menuBar = new javax.swing.JMenuBar();
         mnuEstoque = new javax.swing.JMenu();
         itmInserir = new javax.swing.JMenuItem();
-        itmSelecionar = new javax.swing.JMenuItem();
+        itmListar = new javax.swing.JMenuItem();
         itmAlterar = new javax.swing.JMenuItem();
         itmExcluir = new javax.swing.JMenuItem();
         itmFechar = new javax.swing.JMenuItem();
@@ -47,12 +47,17 @@ public class fmrPrincipal extends javax.swing.JFrame {
                 itmInserirActionPerformed(evt);
             }
         });
+        itmInserir.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                itmInserirKeyPressed(evt);
+            }
+        });
         mnuEstoque.add(itmInserir);
 
-        itmSelecionar.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.CTRL_DOWN_MASK));
-        itmSelecionar.setMnemonic('s');
-        itmSelecionar.setText("Selecionar");
-        mnuEstoque.add(itmSelecionar);
+        itmListar.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_L, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        itmListar.setMnemonic('s');
+        itmListar.setText("Listar");
+        mnuEstoque.add(itmListar);
 
         itmAlterar.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_A, java.awt.event.InputEvent.CTRL_DOWN_MASK));
         itmAlterar.setMnemonic('a');
@@ -99,6 +104,10 @@ public class fmrPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_itmInserirActionPerformed
 
+    private void itmInserirKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_itmInserirKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_itmInserirKeyPressed
+
     /**
      * @param args the command line arguments
      */
@@ -139,7 +148,7 @@ public class fmrPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem itmExcluir;
     private javax.swing.JMenuItem itmFechar;
     private javax.swing.JMenuItem itmInserir;
-    private javax.swing.JMenuItem itmSelecionar;
+    private javax.swing.JMenuItem itmListar;
     private javax.swing.JMenuBar menuBar;
     private javax.swing.JMenu mnuEstoque;
     // End of variables declaration//GEN-END:variables
