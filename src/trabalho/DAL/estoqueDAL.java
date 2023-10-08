@@ -9,27 +9,27 @@ import trabalho.DTO.estoqueDTO;
  * @author autologon
  */
 public class estoqueDAL extends ConexaoMySQL {
-    public void incluirEstoque(estoqueDTO estoque) throws Exception
+    public void IncluirEstoque(estoqueDTO estoque) throws Exception
     {
-        //Prepara a conexão com o MySQL
         abrirBD();
-        SQL = "INSERT INTO estoque (estID,estQTD, estValorTotal) VALUES (?, ?, ?)";
+        SQL = "INSERT INTO estoque (estQTD, estValorTotal) VALUES (?, ?)";
         ps = con.prepareStatement(SQL);
-        //Busca os valores da classe clienteDTO
-        ps.setInt(1, estoque.getEstID());
+        
         ps.setInt(3, estoque.getEstQTD());
         ps.setDouble(4, estoque.getEstValorTotal());
+        
         ps.execute();
         fecharBD();
     }
 
-    public estoqueDTO selecionarEstoquePorID(Integer estID)throws Exception
+    public estoqueDTO SelecionarEstoquePorID(int estID)throws Exception
     {
         abrirBD();
-        SQL = "SELECT * FROM estoque WHERE est_ID=?";
+        SQL = "SELECT * FROM estoque WHERE estID = ?";
         ps = con.prepareStatement(SQL);
         ps.setInt(1, estID);
         rs = ps.executeQuery();
+        
         estoqueDTO estoque = new estoqueDTO();
         if(rs.next())
         {
@@ -40,9 +40,8 @@ public class estoqueDAL extends ConexaoMySQL {
         }
         return estoque;
     }
-    //Método que vai selecionar todos os clientes no nosso Banco de Dados
-    //e ordenar por nome do cliente
-    public List selecionarListaEstoque() throws Exception
+    
+    public List SelecionarListaEstoque() throws Exception
     {
         abrirBD();
         SQL = "SELECT * FROM estoque ORDER BY estID";
@@ -60,25 +59,24 @@ public class estoqueDAL extends ConexaoMySQL {
         fecharBD();
         return listaEstoque;
     }
-    //Método que vai fazer as alterações necessárias nos dados dos clientes
-    //selecionados por seu código no nosso Banco de Dados
     
-    public void alterarEstoque(estoqueDTO estoque) throws Exception
+    public void AlterarEstoque(estoqueDTO estoque) throws Exception
     {
         abrirBD();         
         SQL = "UPDATE estoque SET estQTD = ?, estValorTotal = ? WHERE estID = ?";
         ps = con.prepareStatement(SQL);
-        ps.setInt(1, estoque.getEstID());
-        ps.setInt(2, estoque.getEstQTD());
-        ps.setDouble(3, (estoque.getEstValorTotal()));
+ 
+        ps.setInt(1, estoque.getEstQTD());
+        ps.setDouble(2,estoque.getEstValorTotal());
+        ps.setInt(3, estoque.getEstID());
         ps.execute();
         fecharBD();
     }
     
-    public void excluirEstoque(Integer estID) throws Exception
+    public void ExcluirEstoque(int estID) throws Exception
     {
         abrirBD();
-        SQL = "DELETE FROM estoque WHERE estID=?";
+        SQL = "DELETE FROM estoque WHERE estID = ?";
         ps = con.prepareStatement(SQL);
         ps.setInt(1, estID);
         ps.execute();

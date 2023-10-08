@@ -1,8 +1,6 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/MDIApplication.java to edit this template
- */
 package trabalho.UI;
+
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -27,21 +25,39 @@ public class fmrPrincipal extends javax.swing.JFrame {
     private void initComponents() {
 
         menuBar = new javax.swing.JMenuBar();
+        mnuEstoque1 = new javax.swing.JMenu();
+        itmFechar = new javax.swing.JMenuItem();
         mnuEstoque = new javax.swing.JMenu();
         itmInserir = new javax.swing.JMenuItem();
-        itmListar = new javax.swing.JMenuItem();
-        itmAlterar = new javax.swing.JMenuItem();
-        itmExcluir = new javax.swing.JMenuItem();
-        itmFechar = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
 
+        mnuEstoque1.setMnemonic('f');
+        mnuEstoque1.setText("Aplicativo de Controle");
+
+        itmFechar.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        itmFechar.setMnemonic('x');
+        itmFechar.setText("Fechar");
+        itmFechar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                itmFecharActionPerformed(evt);
+            }
+        });
+        mnuEstoque1.add(itmFechar);
+
+        menuBar.add(mnuEstoque1);
+
         mnuEstoque.setMnemonic('f');
         mnuEstoque.setText("Estoque");
+        mnuEstoque.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuEstoqueActionPerformed(evt);
+            }
+        });
 
         itmInserir.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_I, java.awt.event.InputEvent.CTRL_DOWN_MASK));
         itmInserir.setMnemonic('o');
-        itmInserir.setText("Inserir");
+        itmInserir.setText("Itens");
         itmInserir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 itmInserirActionPerformed(evt);
@@ -53,30 +69,6 @@ public class fmrPrincipal extends javax.swing.JFrame {
             }
         });
         mnuEstoque.add(itmInserir);
-
-        itmListar.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_L, java.awt.event.InputEvent.CTRL_DOWN_MASK));
-        itmListar.setMnemonic('s');
-        itmListar.setText("Listar");
-        mnuEstoque.add(itmListar);
-
-        itmAlterar.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_A, java.awt.event.InputEvent.CTRL_DOWN_MASK));
-        itmAlterar.setMnemonic('a');
-        itmAlterar.setText("Alterar");
-        mnuEstoque.add(itmAlterar);
-
-        itmExcluir.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_E, java.awt.event.InputEvent.CTRL_DOWN_MASK));
-        itmExcluir.setMnemonic('x');
-        itmExcluir.setText("Excluir");
-        itmExcluir.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                itmExcluirActionPerformed(evt);
-            }
-        });
-        mnuEstoque.add(itmExcluir);
-
-        itmFechar.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F, java.awt.event.InputEvent.CTRL_DOWN_MASK));
-        itmFechar.setText("Fechar");
-        mnuEstoque.add(itmFechar);
 
         menuBar.add(mnuEstoque);
 
@@ -96,10 +88,6 @@ public class fmrPrincipal extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void itmExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itmExcluirActionPerformed
-        System.exit(0);
-    }//GEN-LAST:event_itmExcluirActionPerformed
-
     private void itmInserirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itmInserirActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_itmInserirActionPerformed
@@ -108,15 +96,25 @@ public class fmrPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_itmInserirKeyPressed
 
-    /**
-     * @param args the command line arguments
-     */
+    private void itmFecharActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itmFecharActionPerformed
+        var confirmacaoSair = JOptionPane.showConfirmDialog(
+                null,
+                "Deseja Sair do Sistema? ",
+                "Aplicativo de Controle",
+                JOptionPane.YES_NO_OPTION
+        );
+
+        if (confirmacaoSair == JOptionPane.YES_OPTION)
+            this.dispose();
+    }//GEN-LAST:event_itmFecharActionPerformed
+
+    private void mnuEstoqueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuEstoqueActionPerformed
+        if ((fmrEstoque == null) || (!fmrEstoque.isVisible())) {
+            fmrEstoque = new fmrEstoque();
+            fmrEstoque.setVisible(true);
+    }//GEN-LAST:event_mnuEstoqueActionPerformed
+
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
@@ -144,13 +142,11 @@ public class fmrPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenuItem itmAlterar;
-    private javax.swing.JMenuItem itmExcluir;
     private javax.swing.JMenuItem itmFechar;
     private javax.swing.JMenuItem itmInserir;
-    private javax.swing.JMenuItem itmListar;
     private javax.swing.JMenuBar menuBar;
     private javax.swing.JMenu mnuEstoque;
+    private javax.swing.JMenu mnuEstoque1;
     // End of variables declaration//GEN-END:variables
-
+    private fmrEstoque fmrEstoque;
 }

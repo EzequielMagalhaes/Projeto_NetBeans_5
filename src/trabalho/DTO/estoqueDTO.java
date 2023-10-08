@@ -1,5 +1,7 @@
 package trabalho.DTO;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author autologon
@@ -32,5 +34,13 @@ public class estoqueDTO {
 
     public void setEstValorTotal(double estValorTotal) {
         this.estValorTotal = estValorTotal;
+    }
+
+    public void setEstQTD(String valorString) {
+        throw new UnsupportedOperationException("Formato inválido, por favor insira um número inteiro");
+    }
+    
+    public void setEstValorTotal(String valorString) {
+        throw new UnsupportedOperationException("Formato inválido, por favor insira um número inteiro");
     }
 }
