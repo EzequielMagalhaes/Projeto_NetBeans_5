@@ -1,9 +1,11 @@
 package trabalho.UI;
 
+import java.awt.TextField;
 import java.awt.Toolkit;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 import trabalho.DAL.estoqueDAL;
 import trabalho.DTO.estoqueDTO;
@@ -145,28 +147,30 @@ public class fmrEstoque extends javax.swing.JFrame {
                         .addComponent(lbTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(lbID)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(lbQtd)
-                            .addComponent(lbValor, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtQtd, javax.swing.GroupLayout.DEFAULT_SIZE, 80, Short.MAX_VALUE)
-                            .addComponent(txtValor)
-                            .addComponent(txtID))
-                        .addGap(28, 28, 28)
-                        .addComponent(btnBuscar)
-                        .addContainerGap(315, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnInserir)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnAlterar)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnExcluir)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnListarEstoque)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnLimpar)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(btnInserir)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
+                                .addComponent(btnAlterar)
+                                .addGap(18, 18, 18)
+                                .addComponent(btnExcluir)
+                                .addGap(18, 18, 18)
+                                .addComponent(btnListarEstoque)
+                                .addGap(18, 18, 18)
+                                .addComponent(btnLimpar))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lbID)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(lbQtd)
+                                            .addComponent(lbValor, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(txtQtd, javax.swing.GroupLayout.DEFAULT_SIZE, 80, Short.MAX_VALUE)
+                                            .addComponent(txtValor)
+                                            .addComponent(txtID))
+                                        .addGap(28, 28, 28)
+                                        .addComponent(btnBuscar)))
+                                .addGap(0, 0, Short.MAX_VALUE)))
                         .addContainerGap())))
             .addComponent(jScrollPane1)
         );
@@ -201,10 +205,11 @@ public class fmrEstoque extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void itmFecharActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itmFecharActionPerformed
-        System.exit(0);
+        dispose();
     }//GEN-LAST:event_itmFecharActionPerformed
 
     private void txtValorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtValorActionPerformed
@@ -316,10 +321,16 @@ public class fmrEstoque extends javax.swing.JFrame {
         }
 
         int estID = Integer.valueOf(txtID.getText());
-        estoqueDTO dadosEstoque = null;
+        estoqueDTO dadosEstoque = new estoqueDTO();
 
         try {
             dadosEstoque = estoqueDAL.SelecionarEstoquePorID(estID);
+            this.txtQtd.setText(String.valueOf(dadosEstoque.getEstQTD()));
+            this.txtValor.setText(String.valueOf(dadosEstoque.getEstValorTotal()));
+//            this.txtQtd.getDocument().remove(0, Integer.MAX_VALUE);
+            this.txtQtd.getDocument().insertString(0, "Lelton", null);
+            this.txtQtd =  new JTextField(String.valueOf(dadosEstoque.getEstQTD()));
+            this.txtValor =  new JTextField(String.valueOf(dadosEstoque.getEstValorTotal()));
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(null, "Ocorreu um erro ao consultar o banco de dados, por favor entre em contato com o administrador do sistema!");
         }

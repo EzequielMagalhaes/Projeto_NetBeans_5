@@ -7,17 +7,20 @@ public class fmrPrincipal extends javax.swing.JFrame {
 
     public fmrPrincipal() {
         initComponents();
-        inserirIcone();
+//        inserirIcone();
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jCheckBox1 = new javax.swing.JCheckBox();
         menuBar = new javax.swing.JMenuBar();
         mnuEstoque1 = new javax.swing.JMenu();
         itmFechar = new javax.swing.JMenuItem();
         mnuEstoque = new javax.swing.JMenu();
         itmInserir = new javax.swing.JMenuItem();
+
+        jCheckBox1.setText("jCheckBox1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
 
@@ -75,10 +78,13 @@ public class fmrPrincipal extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void itmInserirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itmInserirActionPerformed
-
+        this.setVisible(false);
+        fmrEstoque estoque =new fmrEstoque();
+        estoque.setVisible(true);
     }//GEN-LAST:event_itmInserirActionPerformed
 
     private void itmInserirKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_itmInserirKeyPressed
@@ -101,6 +107,7 @@ public class fmrPrincipal extends javax.swing.JFrame {
         if ((fmrEstoque == null) || (!fmrEstoque.isVisible())) {
             fmrEstoque = new fmrEstoque();
             fmrEstoque.setVisible(true);
+        }
     }//GEN-LAST:event_mnuEstoqueActionPerformed
 
     public static void main(String args[]) {
@@ -111,15 +118,12 @@ public class fmrPrincipal extends javax.swing.JFrame {
                     break;
                 }
             }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(fmrPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(fmrPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(fmrPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(fmrPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        
         //</editor-fold>
         //</editor-fold>
 
@@ -134,13 +138,14 @@ public class fmrPrincipal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem itmFechar;
     private javax.swing.JMenuItem itmInserir;
+    private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JMenuBar menuBar;
     private javax.swing.JMenu mnuEstoque;
     private javax.swing.JMenu mnuEstoque1;
     // End of variables declaration//GEN-END:variables
     private fmrEstoque fmrEstoque;
     
-    private void inserirIcone() {
-        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("estoque")));
-    }
+//    private void inserirIcone() {
+//        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("estoque")));
+//    }
 }

@@ -17,7 +17,7 @@ public class ConexaoMySQL {
     public void abrirBD()throws Exception
     {
        Class.forName("com.mysql.cj.jdbc.Driver");
-       String url = "jdbc:mysql://localhost:3306/trabalho26_09";
+       String url = "jdbc:mysql://localhost:3307/trabalho26_09";
        String user = "root";//Seu nome de usuário.
        String password = "";  //Sua senha.
        con = DriverManager.getConnection(url, user, password);

@@ -37,10 +37,18 @@ public class estoqueDTO {
     }
 
     public void setEstQTD(String valorString) {
-        throw new UnsupportedOperationException("Formato inválido, por favor insira um número inteiro");
+        try {
+           this.estQTD = Integer.parseInt(valorString);
+        } catch (NumberFormatException ex) {
+            throw new UnsupportedOperationException("Formato invalido, por favor insira um numero inteiro");
+        }
     }
     
     public void setEstValorTotal(String valorString) {
-        throw new UnsupportedOperationException("Formato inválido, por favor insira um número inteiro");
+        try {
+            this.estValorTotal = Double.parseDouble(valorString);
+        } catch (NumberFormatException ex) {
+            throw new UnsupportedOperationException("Formato invalido, por favor insira um numero inteiro");
+        }
     }
 }

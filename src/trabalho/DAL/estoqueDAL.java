@@ -15,8 +15,8 @@ public class estoqueDAL extends ConexaoMySQL {
         SQL = "INSERT INTO estoque (estQTD, estValorTotal) VALUES (?, ?)";
         ps = con.prepareStatement(SQL);
         
-        ps.setInt(3, estoque.getEstQTD());
-        ps.setDouble(4, estoque.getEstValorTotal());
+        ps.setInt(1, estoque.getEstQTD());
+        ps.setDouble(2, estoque.getEstValorTotal());
         
         ps.execute();
         fecharBD();
